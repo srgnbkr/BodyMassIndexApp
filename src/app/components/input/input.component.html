@@ -1,0 +1,24 @@
+<div class="field">
+  <div class="control">
+    <label for="">{{ label }}</label>
+    <input
+      class="form-control"
+      placeholder="{{ placeholder }}"
+      type="{{ type }}"
+      [formControl]="control"
+      [ngClass]="{ 'is-danger': showErrors() }"
+    />
+  </div>
+</div>
+
+<ng-container *ngIf="showErrors()">
+  <div class="help is-danger" *ngIf="control?.errors?.['required']">
+    <span class="text-danger">*Zorunlu Alan</span>
+  </div>
+  <div class="help is-danger" *ngIf="control.errors?.['min']">
+    <span class="text-danger">
+      Girdiğiniz sayı
+      {{control.errors?.['min']?.min}}'dan küçük olamaz.
+    </span>
+  </div>
+</ng-container>

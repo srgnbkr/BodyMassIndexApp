@@ -1,0 +1,80 @@
+<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+  <div class="row align-items-center g-lg-5 py-5">
+    <div class="col-lg-6 text-center text-lg-start">
+      <form [formGroup]="bmiCalculateForm" class="p-4 p-md-5 border rounded-3 bg-light">
+        <h4>Vücut Kitle Endeksi Hesapla</h4>
+        <div class="form-floating mb-3 mt-3">
+          <app-input type="number" placeholder="Kilo (78)" [control]="bmiCalculateForm.get('weight')"></app-input>
+        </div>
+        <div class="form-floating mb-3 mt-3">
+          <app-input type="number" placeholder="Boy (178)" [control]="bmiCalculateForm.get('height')"></app-input>
+        </div>
+
+
+
+        <button class="w-100 btn btn-lg btn-primary" [disabled]="bmiCalculateForm.invalid" (click)="calculateBmi()">
+          <i class="bi bi-check-circle-fill"></i>
+          Hesapla
+        </button>
+      </form>
+    </div>
+    <div class="col-md-10 mx-auto col-lg-6">
+      <app-bmi-result [result]="result"></app-bmi-result>
+      <!-- Button trigger modal -->
+      <button [disabled]="bmiCalculateForm.invalid" type="button" class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Kilonuza Özel Diyet Listeni İçin Tıklayınız
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Larry the Bird</td>
+                    <td>@twitter</td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
