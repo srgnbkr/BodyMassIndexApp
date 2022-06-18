@@ -1,3 +1,4 @@
+import { StorageService } from './../../services/storage.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -11,7 +12,7 @@ export class BmiCalculateComponent implements OnInit {
 
   result!:number;
 
-  constructor() { }
+  constructor(private storageService:StorageService) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +24,10 @@ export class BmiCalculateComponent implements OnInit {
 
   calculateBmi(){
       this.result = this.bmiCalculateForm.value.weight / (Math.pow(this.bmiCalculateForm.value.height/100,2));
+  }
+
+  public addToLocalStorage(): void {
+    this.storageService.addToLocalStorage(this.bmiCalculateForm.value.weight, this.bmiCalculateForm.value.height);
   }
 
 
